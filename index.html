@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#101d35" />
+  <title>Kriggor Route — Planejamento inteligente</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" data-page="dashboard">
+        <span class="brand-mark">K</span>
+        <span><strong>KRIGGOR</strong><small>ROUTE</small></span>
+      </a>
+      <div class="workspace-label">MENU PRINCIPAL</div>
+      <nav class="nav">
+        <button class="nav-item active" data-page="dashboard"><span>⌂</span> Início</button>
+        <div class="nav-section">TRABALHO</div>
+        <button class="nav-item" data-page="clients"><span>♙</span> Clientes</button>
+        <button class="nav-item" data-page="routes"><span>⌁</span> Rotas</button>
+        <button class="nav-item" data-page="history"><span>◷</span> Histórico de visitas</button>
+        <button class="nav-item" data-page="reports"><span>▥</span> Relatórios</button>
+        <div class="nav-section">VIAGENS</div>
+        <button class="nav-item" data-page="trips"><span>✈</span> Minhas viagens</button>
+        <button class="nav-item" data-page="planning"><span>▦</span> Planejamento diário</button>
+        <button class="nav-item" data-page="destinations"><span>◎</span> Destinos</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="sidebar-note"><span class="note-icon">✦</span><div><strong>Planeje melhor.</strong><small>Chegue mais longe com menos esforço.</small></div></div>
+        <button class="profile" data-page="settings"><span class="avatar">KR</span><span><strong>Minha conta</strong><small>Configurações</small></span><span class="chevron">›</span></button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Abrir menu">☰</button>
+        <div class="breadcrumb"><span>KRIGGOR ROUTE</span><b>/</b><strong id="crumb">Início</strong></div>
+        <div class="top-actions"><span class="status-dot"></span><span class="status-text">Espaço de trabalho</span><button class="icon-button" title="Notificações">♧</button></div>
+      </header>
+
+      <section class="page active" id="page-dashboard">
+        <div class="welcome-row">
+          <div><div class="eyebrow">VISÃO GERAL</div><h1>Bom trabalho. <span>Vamos planejar?</span></h1><p class="muted">Organize seus destinos e aproveite melhor cada deslocamento.</p></div>
+          <button class="primary-btn" data-action="new-route">＋ Nova rota</button>
+        </div>
+        <div class="stat-grid">
+          <article class="stat-card"><div class="stat-top"><span>Clientes cadastrados</span><span class="stat-icon blue">♙</span></div><strong id="statClients">0</strong><small>Na sua carteira</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Rotas planejadas</span><span class="stat-icon violet">⌁</span></div><strong id="statRoutes">0</strong><small>Rotas registradas</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Visitas concluídas</span><span class="stat-icon green">✓</span></div><strong id="statVisits">0</strong><small>Histórico de visitas</small></article>
+          <article class="stat-card"><div class="stat-top"><span>Viagens</span><span class="stat-icon amber">✈</span></div><strong id="statTrips">0</strong><small>Planejamentos criados</small></article>
+        </div>
+        <div class="content-grid">
+          <article class="panel">
+            <div class="panel-heading"><div><h2>Acesso rápido</h2><p>Comece por onde precisar.</p></div></div>
+            <div class="quick-grid">
+              <button class="quick-action" data-page="clients"><span class="quick-icon">♙</span><strong>Novo cliente</strong><small>Adicione à sua carteira</small><b>＋</b></button>
+              <button class="quick-action" data-action="new-route"><span class="quick-icon">⌁</span><strong>Planejar rota</strong><small>Organize seus destinos</small><b>＋</b></button>
+              <button class="quick-action" data-page="trips"><span class="quick-icon">✈</span><strong>Nova viagem</strong><small>Monte seu itinerário</small><b>＋</b></button>
+            </div>
+          </article>
+          <article class="panel">
+            <div class="panel-heading"><div><h2>Atividade recente</h2><p>Seus últimos registros.</p></div><button class="text-btn" data-page="history">Ver histórico →</button></div>
+            <div id="recentActivity" class="activity-list"><div class="empty-state compact"><span>◷</span><p>Nenhuma atividade por enquanto.</p><small>Quando você registrar visitas, elas aparecerão aqui.</small></div></div>
+          </article>
+        </div>
+        <div class="info-banner"><div class="banner-symbol">✦</div><div><strong>Seu planejamento começa aqui</strong><p>Cadastre seus clientes, reúna destinos e construa rotas com mais organização.</p></div><span class="banner-tag">SMART ROUTE PLANNING</span></div>
+      </section>
+
+      <section class="page" id="page-clients">
+        <div class="page-heading"><div><div class="eyebrow">TRABALHO</div><h1>Clientes</h1><p class="muted">Gerencie sua carteira de contatos e empresas.</p></div><button class="primary-btn" data-action="add-client">＋ Novo cliente</button></div>
+        <div class="toolbar"><input id="clientSearch" class="search" placeholder="⌕  Buscar por empresa, contato ou cidade..." /><select id="clientFilter"><option value="all">Todas as categorias</option><option>Ativo</option><option>Potencial</option><option>Inativo</option></select></div>
+        <div class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>EMPRESA / CLIENTE</th><th>CONTATO</th><th>CIDADE</th><th>CATEGORIA</th><th></th></tr></thead><tbody id="clientsTable"></tbody></table></div><div id="clientsEmpty" class="empty-state"><span>♙</span><strong>Sua carteira começa aqui</strong><p>Cadastre seu primeiro cliente para organizar seus contatos.</p><button class="primary-btn small" data-action="add-client">＋ Cadastrar cliente</button></div></div>
+      </section>
+
+      <section class="page" id="page-routes">
+        <div class="page-heading"><div><div class="eyebrow">TRABALHO</div><h1>Rotas</h1><p class="muted">Organize os destinos das suas visitas profissionais.</p></div><button class="primary-btn" data-action="new-route">＋ Nova rota</button></div>
+        <div id="routesList" class="card-list"></div>
+      </section>
+
+      <section class="page" id="page-history">
+        <div class="page-heading"><div><div class="eyebrow">TRABALHO</div><h1>Histórico de visitas</h1><p class="muted">Acompanhe os registros das suas visitas.</p></div></div>
+        <div class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>CLIENTE</th><th>DATA</th><th>OBSERVAÇÕES</th><th>STATUS</th></tr></thead><tbody id="historyTable"></tbody></table></div><div id="historyEmpty" class="empty-state"><span>◷</span><strong>Nenhuma visita registrada</strong><p>Quando concluir uma visita, ela ficará disponível aqui.</p></div></div>
+      </section>
+
+      <section class="page" id="page-reports">
+        <div class="page-heading"><div><div class="eyebrow">TRABALHO</div><h1>Relatórios</h1><p class="muted">Uma visão resumida da sua atividade.</p></div></div>
+        <div class="stat-grid report-stats"><article class="stat-card"><span>Clientes</span><strong id="reportClients">0</strong></article><article class="stat-card"><span>Rotas criadas</span><strong id="reportRoutes">0</strong></article><article class="stat-card"><span>Visitas concluídas</span><strong id="reportVisits">0</strong></article></div>
+        <div class="panel"><h2>Resumo da sua operação</h2><p class="muted">Os indicadores serão atualizados conforme você cadastrar clientes, criar rotas e registrar visitas.</p><div id="reportSummary" class="report-summary"></div></div>
+      </section>
+
+      <section class="page" id="page-trips">
+        <div class="page-heading"><div><div class="eyebrow">VIAGENS</div><h1>Minhas viagens</h1><p class="muted">Planeje viagens e reúna os lugares que deseja visitar.</p></div><button class="primary-btn" data-action="add-trip">＋ Nova viagem</button></div>
+        <div id="tripsList" class="card-list"></div>
+      </section>
+
+      <section class="page" id="page-planning">
+        <div class="page-heading"><div><div class="eyebrow">VIAGENS</div><h1>Planejamento diário</h1><p class="muted">Visualize os destinos organizados para cada dia.</p></div></div>
+        <div class="panel"><div class="empty-state"><span>▦</span><strong>Seu planejamento diário</strong><p>Crie uma viagem e adicione destinos para começar a organizar seus dias.</p><button class="primary-btn small" data-page="trips">Ver minhas viagens</button></div></div>
+      </section>
+
+      <section class="page" id="page-destinations">
+        <div class="page-heading"><div><div class="eyebrow">VIAGENS</div><h1>Destinos</h1><p class="muted">Consulte os destinos adicionados às suas viagens.</p></div><button class="primary-btn" data-page="trips">＋ Adicionar em viagem</button></div>
+        <div id="destinationsList" class="card-list"></div>
+      </section>
+
+      <section class="page" id="page-settings">
+        <div class="page-heading"><div><div class="eyebrow">CONTA</div><h1>Configurações</h1><p class="muted">Preferências desta versão do Kriggor Route.</p></div></div>
+        <div class="panel settings-panel"><h2>Armazenamento</h2><p class="muted">Nesta versão inicial, os registros ficam salvos localmente neste navegador.</p><div class="warning-box">Esta versão ainda não possui login seguro nem sincronização entre dispositivos. Não utilize dados pessoais sensíveis até conectarmos um banco de dados e autenticação.</div><button class="secondary-btn" id="exportData">Exportar meus dados (JSON)</button></div>
+      </section>
+
+      <footer class="footer">KRIGGOR ROUTE <span>•</span> SMART ROUTE PLANNING <span class="footer-right">Versão inicial 0.1</span></footer>
+    </main>
+  </div>
+
+  <dialog id="modal">
+    <form method="dialog" id="modalForm">
+      <div class="modal-head"><div><div class="eyebrow" id="modalEyebrow">NOVO REGISTRO</div><h2 id="modalTitle">Adicionar</h2></div><button class="close-btn" value="cancel" aria-label="Fechar">×</button></div>
+      <div id="modalFields" class="modal-fields"></div>
+      <div class="modal-actions"><button class="secondary-btn" value="cancel">Cancelar</button><button class="primary-btn" id="modalSave" value="default">Salvar</button></div>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
