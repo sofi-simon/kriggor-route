@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#101d35" />
   <title>Kriggor Route — Planejamento inteligente</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -77,6 +78,17 @@
       <section class="page" id="page-routes">
         <div class="page-heading"><div><div class="eyebrow">TRABALHO</div><h1>Rotas</h1><p class="muted">Organize os destinos das suas visitas profissionais.</p></div><button class="primary-btn" data-action="new-route">＋ Nova rota</button></div>
         <div id="routesList" class="card-list"></div>
+        <article class="panel map-panel">
+          <div class="panel-heading"><div><h2>Mapa de destinos</h2><p>Pesquise um endereço ou clique no mapa para marcar um local.</p></div></div>
+          <div class="map-tools">
+            <input id="mapSearch" class="search" placeholder="Pesquisar endereço ou cidade..." />
+            <button class="primary-btn" id="mapSearchBtn">Buscar</button>
+            <select id="mapRouteSelect" aria-label="Escolher rota"><option value="">Selecione uma rota</option></select>
+            <button class="secondary-btn" id="addMapPointBtn" disabled>Adicionar à rota</button>
+          </div>
+          <div id="routeMap" role="application" aria-label="Mapa interativo de destinos"></div>
+          <p class="map-help" id="mapHelp">Pesquise um local ou clique no mapa. Depois selecione uma rota e adicione o ponto.</p>
+        </article>
       </section>
 
       <section class="page" id="page-history">
@@ -122,6 +134,7 @@
     </form>
   </dialog>
   <div id="toast" class="toast" role="status"></div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

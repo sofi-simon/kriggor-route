@@ -14,7 +14,8 @@ Este projeto é estático: não exige Node.js, Python ou instalação de depend�
 - Navegação entre painel, clientes, rotas, histórico, relatórios e viagens.
 - Cadastro e exclusão de clientes.
 - Registro de visitas concluídas.
-- Cadastro de rotas com origem e lista de destinos.
+- Cadastro e edição de rotas com origem e lista de destinos.
+- Mapa interativo OpenStreetMap/Leaflet: pesquisar endereços, clicar para marcar locais e adicionar pontos às rotas.
 - Cadastro de viagens e destinos.
 - Exportação dos dados locais em JSON.
 
@@ -22,7 +23,8 @@ Este projeto é estático: não exige Node.js, Python ou instalação de depend�
 Esta é a primeira versão de interface e protótipo funcional. Os registros ficam no `localStorage` do navegador utilizado. Portanto:
 - Não há login/autenticação segura ainda.
 - Os dados não sincronizam entre computador e celular.
-- Não há integração ativa com Google Maps, geocodificação, trânsito ou otimização real de trajetos.
+- O mapa usa OpenStreetMap e busca de endereços via Nominatim; serviços públicos podem ter limites e disponibilidade variável.
+- Ainda não há cálculo de trajeto de carro, trânsito em tempo real nem otimização automática da ordem dos destinos.
 - Não use dados pessoais sensíveis ou informações confidenciais nesta versão.
 
 ## Próximas etapas
